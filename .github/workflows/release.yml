@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            args: "--target aarch64-apple-darwin"
+            name: "macOS ARM64 (Apple Silicon)"
+          - platform: macos-latest
+            args: "--target x86_64-apple-darwin"
+            name: "macOS x64 (Intel)"
+
+    runs-on: ${{ matrix.platform }}
+    name: Build ${{ matrix.name }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin,x86_64-apple-darwin
+
+      - name: Setup Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install frontend dependencies
+        run: bun install
+
+      - name: Build and release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: "Claude Sales Expert v__VERSION__"
+          releaseBody: |
+            See the assets below to download and install Claude Sales Expert for your platform.
+
+            ### Installation
+
+            1. Download the `.dmg` file for your architecture
+            2. Open the `.dmg` and drag Claude Sales Expert to Applications
+            3. **Before opening**, run this command in Terminal to remove the quarantine flag:
+               ```
+               xattr -cr /Applications/Claude\ Sales\ Expert.app
+               ```
+            4. Open Claude Sales Expert from Applications
+
+            > **Note:** Claude Sales Expert is not yet code-signed with an Apple Developer certificate, so macOS Gatekeeper will block it. The `xattr` command above removes the quarantine flag and allows it to run.
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}
