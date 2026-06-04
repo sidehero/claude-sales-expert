@@ -10,9 +10,11 @@
 
 # Claude Sales Expert
 
-AI-powered B2B lead research and qualification desktop application that leverages Claude CLI to automatically research companies, score leads, and help you focus on the opportunities that matter most.
+AI-powered B2B lead research and qualification desktop application that leverages Claude Code to automatically research companies, score leads, and help you focus on the opportunities that matter most.
 
 ## ⚡ Quick Start (One-Click Install)
+
+> ⚠️ **Required:** Claude Code must be installed first. Download from [claude.ai/code](https://claude.ai/code) and authenticate.
 
 ### 🪟 Windows
 
@@ -96,7 +98,7 @@ Claude Sales Expert is a powerful desktop application for B2B sales teams to res
 - Export leads to CSV
 
 ### AI-Powered Research
-- Company research with Claude CLI
+- Company research with Claude Code
 - Person research for individual contacts
 - Automatic contact discovery during company research
 - Web search integration for finding company information
@@ -133,7 +135,7 @@ Claude Sales Expert is a powerful desktop application for B2B sales teams to res
 | **State** | Zustand with Immer, TanStack Query |
 | **UI Components** | Radix UI, Tabler Icons, Sonner toasts |
 | **Animations** | Motion (Framer Motion) |
-| **AI Backend** | Claude CLI |
+| **AI Backend** | Claude Code |
 
 ---
 
@@ -172,7 +174,7 @@ Claude Sales Expert is a powerful desktop application for B2B sales teams to res
 │                                    │                                        │
 │                                    ▼                                        │
 │                         ┌─────────────────────┐                            │
-│                         │   Claude CLI         │                            │
+│                         │   Claude Code         │                            │
 │                         │   (AI Backend)       │                            │
 │                         └─────────────────────┘                            │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -192,9 +194,11 @@ The app uses three communication patterns:
 
 ### Prerequisites
 
+> ⚠️ **Required:** Claude Code must be installed and authenticated before running the app. Download from [claude.ai/code](https://claude.ai/code).
+
 - [Bun](https://bun.sh) - JavaScript runtime
 - [Rust](https://rustup.rs) - Programming language
-- [Claude CLI](https://claude.ai/code) - AI assistant with API access
+- [Claude Code](https://claude.ai/code) - AI assistant (required)
 
 ### Installation
 
@@ -246,7 +250,7 @@ Describe your ideal customer profile, and Claude will search the web to find mat
 When you click "Research" on a lead:
 
 1. **Prompt Assembly** - System fetches prompt templates from database and injects company data
-2. **Claude CLI Execution** - Spawns Claude CLI with prompt and output file paths
+2. **Claude Code Execution** - Spawns Claude Code with prompt and output file paths
 3. **Stream Processing** - Parses Claude's JSON output in real-time
 4. **Result Parsing** - CompletionHandler verifies output files and parses content
 5. **Database Update** - Stores results (company profile, people, enrichment data)
@@ -322,7 +326,7 @@ Two methods:
 ### Job Lifecycle
 
 1. **Queued** - Job registered in memory + persisted to DB
-2. **Running** - Semaphore acquired, Claude CLI spawned
+2. **Running** - Semaphore acquired, Claude Code spawned
 3. **Streaming** - Output processed in real-time, logs persisted
 4. **Completed/Failed** - CompletionHandler verifies, parses, updates DB
 
@@ -372,6 +376,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Built with ❤️ using Tauri, React, and Claude CLI**
+**Built with ❤️ using Tauri, React, and Claude Code**
 
 </div>

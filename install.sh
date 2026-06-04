@@ -37,6 +37,25 @@ fi
 # Reload PATH
 export PATH="$HOME/.bun/bin:$HOME/.cargo/bin:$PATH"
 
+# Check if Claude Code is installed (REQUIRED)
+echo -e "${CYAN}========================================"
+echo -e " Step 3: Checking Claude Code..."
+echo -e "========================================${NC}"
+
+if ! command -v claude &> /dev/null; then
+    echo ""
+    echo -e "${YELLOW}╔═══════════════════════════════════════════════════════════╗"
+    echo -e "║  WARNING: Claude Code is REQUIRED to run this app!          ║"
+    echo -e "╚═══════════════════════════════════════════════════════════╝${NC}"
+    echo ""
+    echo "Please install from: https://claude.ai/code"
+    echo "Then authenticate with: claude auth"
+    echo ""
+    echo "After installing Claude Code, run this script again."
+    exit 1
+fi
+echo -e "${GREEN}✓ Claude Code found${NC}"
+
 # Check for Homebrew (for WebKit dependencies on macOS)
 if [[ "$OSTYPE" == "darwin"* ]]; then
     if command -v brew &> /dev/null; then
@@ -82,7 +101,7 @@ case $choice in
         echo -e "${GREEN}Building for production...${NC}"
         bun run tauri:build
         
-        APP_PATH="src-tauri/target/release/Claude Sales Expert.app"
+        APP_PATH="src-tauri/target/release/claude-sales-expert.app"
         if [ -d "$APP_PATH" ]; then
             echo ""
             echo -e "${CYAN}Copying to Applications...${NC}"

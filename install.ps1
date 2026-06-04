@@ -89,8 +89,28 @@ if (Test-Command "rustc") {
     }
 }
 
-# Step 3: Clone or Update Repository
-Write-Step "Step 3: Setting up Repository..."
+# Step 3: Check Claude Code (REQUIRED)
+Write-Step "Step 3: Checking Claude Code..."
+if (Test-Command "claude") {
+    Write-Host "✓ Claude Code is already installed" -ForegroundColor Green
+} else {
+    Write-Host "✗ Claude Code not found!" -ForegroundColor Red
+    Write-Host @"
+
+╔═══════════════════════════════════════════════════════════╗
+║  ⚠️  Claude Code is REQUIRED to run this app!             ║
+║                                                           ║
+║  Please install from: https://claude.ai/code              ║
+║  Then authenticate with: claude auth                      ║
+║                                                           ║
+║  After installing Claude Code, run this script again.    ║
+╚═══════════════════════════════════════════════════════════╝
+"@ -ForegroundColor Yellow
+    $script:failed = $true
+}
+
+# Step 4: Clone or Update Repository
+Write-Step "Step 4: Setting up Repository..."
 $repoDir = "$PSScriptRoot\..\claude-sales-expert"
 if (-not (Test-Path $repoDir)) {
     Write-Host "Cloning repository..." -ForegroundColor Yellow
@@ -107,8 +127,8 @@ if (-not (Test-Path $repoDir)) {
 
 Set-Location $repoDir
 
-# Step 4: Install Dependencies
-Write-Step "Step 4: Installing Dependencies..."
+# Step 5: Install Dependencies
+Write-Step "Step 5: Installing Dependencies..."
 if (-not $script:failed) {
     Write-Host "Running: bun install" -ForegroundColor Yellow
     bun install
@@ -120,8 +140,8 @@ if (-not $script:failed) {
     }
 }
 
-# Step 5: Build & Run
-Write-Step "Step 5: Building & Running..."
+# Step 6: Build & Run
+Write-Step "Step 6: Building & Running..."
 if (-not $script:failed) {
     Write-Host @"
 

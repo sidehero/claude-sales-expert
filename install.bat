@@ -45,10 +45,28 @@ if %ERRORLEVEL% neq 0 (
 echo ✓ Rust found: 
 rustc --version
 
+REM Check if Claude Code is installed (REQUIRED)
 echo.
 echo ========================================
-echo  Installing Claude Sales Expert...
+echo  Step 3: Checking Claude Code...
 echo ========================================
+where claude >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo.
+    echo ════════════════════════════════════════════════════════════
+    echo  WARNING: Claude Code is REQUIRED to run this app!
+    echo ════════════════════════════════════════════════════════════
+    echo.
+    echo Please install from: https://claude.ai/code
+    echo Then authenticate with: claude auth
+    echo.
+    echo After installing Claude Code, run this script again.
+    echo ════════════════════════════════════════════════════════════
+    pause
+    exit /b 1
+)
+echo ✓ Claude Code found
+
 echo.
 
 REM Clone or update repository
