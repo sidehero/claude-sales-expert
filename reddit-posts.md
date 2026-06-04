@@ -1,5 +1,22 @@
 # Reddit Posts for Claude Sales Expert
 
+## Positioning as Open Source Alternative
+
+**Paid tools this replaces:**
+- Apollo ($39-119/mo)
+- ZoomInfo ($5,000-15,000+/yr)
+- Clearbit ($199+/mo)
+- Lusha ($299+/mo)
+
+**Key differentiators:**
+- Free forever (no subscriptions)
+- No credit limits
+- Your data stays local
+- Custom scoring criteria
+- Open source — customize it however you want
+
+---
+
 ## r/indiehackers
 
 **Flair:** Launch
@@ -28,6 +45,11 @@ Tried using APIs directly first. Too expensive, rate limits everywhere. Claude C
 
 **The pain this solves:**
 I was spending 5+ hours a week manually researching leads. Now I add a company, click "Research", and watch it happen in real-time. 50 companies in about 30 minutes.
+
+**The cost angle:**
+I've used Apollo. I've used ZoomInfo trials. The problem isn't finding data — it's the cost. Apollo wants $79/mo for basic access. ZoomInfo is $5,000+/year. And that's before you hit export limits.
+
+This is free. Open source. Your data stays on your machine.
 
 **Link:** https://github.com/sidehero/claude-sales-expert
 
@@ -69,7 +91,7 @@ It's a B2B lead research tool if anyone cares. But mostly I'm curious — has an
 
 **Flair:** Showoff Saturday (if available) or Discussion
 
-**Title:** I spent 10 hours/week researching leads manually. Built an AI tool to automate it.
+**Title:** I spent 10 hours/week researching leads manually. Built an AI tool to automate it — for free.
 
 **Body:**
 
@@ -92,6 +114,11 @@ Built a desktop app that uses Claude Code to research companies automatically.
 - Response rate: up slightly (better research = better outreach)
 - More consistent — I actually research every lead now instead of skipping it
 
+**The cost reality:**
+I tried Apollo. $79/mo got me maybe 5,000 contacts before credits ran out. ZoomInfo? $5,000/year for what amounts to a fancy search bar.
+
+This is free. Open source. No credit limits. No vendor lock-in.
+
 **Link:** https://github.com/sidehero/claude-sales-expert
 
 Not selling anything — it's open source. Just wondering if anyone else has automated their research process and what tools you're using.
@@ -102,31 +129,39 @@ Not selling anything — it's open source. Just wondering if anyone else has aut
 
 **Flair:** [Tool/Resource]
 
-**Title:** Stop manually researching leads. Here's what I built (free, open source)
+**Title:** Stop paying for lead research. Here's the free alternative I built.
 
 **Body:**
 
 Quick question for the sales folks here:
 
-How much time do you spend on research before reaching out to a prospect? 10 minutes? 30? An hour?
+How much are you paying for Apollo? ZoomInfo? Lusha?
 
-I was spending way too much. So I built something to fix it.
+I was on the Apollo $79/mo plan. Then $119/mo because basic wasn't enough. Still hitting export limits. Still not getting the data I actually needed.
 
-**What it does:**
+**The problem with paid tools:**
+- Credit limits that run out fast
+- Data that's 6 months old
+- Your company data being sold to your competitors (hello, ZoomInfo)
+- $5,000+ yearly contracts for "enterprise" features
+
+**What I built instead:**
+A desktop app that researches companies using AI. No subscriptions. No credit limits.
+
 - Takes a company name/website
 - Uses AI to research: funding, employees, tech stack, business model
 - Finds relevant contacts (not just any contact — the right ones for your use case)
 - Scores the lead based on criteria you set
 
-**The catch:**
-It's not a SaaS product you pay for. It's a desktop app that runs locally using Claude Code. No subscription, no API fees.
+**The trade-off:**
+It's a desktop app, not a web service. You run it locally. But for that trade-off, you get:
+- Zero monthly cost
+- Unlimited research
+- Your data stays with you
 
-**Why am I sharing?**
-Because I've been where you are. Spending hours on research, getting burned out, wondering if there's a better way.
+**Link:** https://github.com/sidehero/claude-sales-expert
 
-Check it out if interested: https://github.com/sidehero/claude-sales-expert
-
-What's your current research process? Still doing it manually?
+What's your current research stack? Still paying for ZoomInfo?
 
 ---
 
@@ -148,6 +183,14 @@ Using Claude Code instead of API calls. Runs locally on your machine. No per-tok
 2. Contact discovery — finds relevant people at the company
 3. Lead scoring — evaluates against configurable criteria (industry, size, growth signals)
 4. Conversation generation — creates personalized talking points for outreach
+
+**The cost comparison:**
+| Tool | Monthly Cost | Hidden Costs |
+|------|--------------|--------------|
+| Apollo | $79/mo | Export limits |
+| ZoomInfo | $5,000+/yr | Seat fees |
+| Clearbit | $199/mo | Per-enrichment API calls |
+| **This app** | **$0** | **None** |
 
 **Technical details:**
 - Tauri 2 (Rust backend + React frontend)
