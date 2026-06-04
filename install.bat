@@ -107,7 +107,7 @@ if %ERRORLEVEL% neq 0 (
 )
 echo.
 echo Copying .exe to Desktop...
-copy /Y "src-tauri\target\release\Claude Sales Expert.exe" "%USERPROFILE%\Desktop\Claude Sales Expert.exe"
+copy /Y "src-tauri\target\release\claude-sales-expert.exe" "%USERPROFILE%\Desktop\Claude Sales Expert.exe"
 echo ✓ Copied to Desktop
 echo.
 echo Launching app...
@@ -126,7 +126,7 @@ echo Building for production...
 bun run tauri:build
 echo.
 echo Build complete! Executable is in:
-echo   src-tauri\target\release\Claude Sales Expert.exe
+echo   src-tauri\target\release\claude-sales-expert.exe
 pause
 goto :end
 

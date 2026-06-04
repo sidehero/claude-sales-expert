@@ -148,7 +148,7 @@ Or build for production:
     
     $choice = Read-Host "Enter choice [1]"
     
-    $exePath = "$repoDir\src-tauri\target\release\Claude Sales Expert.exe"
+    $exePath = "$repoDir\src-tauri\target\release\claude-sales-expert.exe"
     $desktopPath = "$env:USERPROFILE\Desktop\Claude Sales Expert.exe"
     
     switch ($choice) {
